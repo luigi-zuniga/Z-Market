@@ -10,6 +10,7 @@ namespace Z_Market.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
             ContextKey = "Z_Market.Models.Z_MarketContext";
         }
 
