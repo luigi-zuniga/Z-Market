@@ -1,0 +1,34 @@
+Habilitar Migracion para la creacion de Tablas y campos 
+Nuget
+Migraciones Automaticas 
+	En Ambientes de Produccion no es recomendable realizar migraciones automaticas
+	debido a que pueden dañarse o eliminar datos, por ejemplo cambiar el tipo de dato
+	de un campo.
+	Si son util en Ambientes de Desarrollo
+
+	Z_MarketContext <= nombre de nuestro contexto en /Modelo/NuestroContexto.cs
+	/***** Clase *****/
+        protected override void Seed(Z_Market.Models.(=>Z_MarketContext <= este context
+
+	Comando NugetConsole
+	Enable-Migrations -ContextType Z_MarketContext -EnableAutomaticMigrations
+
+	//En Modelo - Habilitamos que los datos se puedan perder para que no de errores
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true; <= Añadir
+            ContextKey = "Z_Market.Models.Z_MarketContext";
+        }
+
+	En Global.asax Añadimos
+        protected void Application_Start()
+        {
+
+        	Database.SetInitializer(new MigrateDatabaseToLatestVersion<Models.Z_MarketContext, Migrations.Configuration>());
+		
+		
+	MigrateDatabaseToLatestVersion <= Verifica cada vez que arranca la aplicacion si se realizaron cambios de migracion
+	Parametro:
+		<NuestroModelo, CarpetaDeLaMigacion/Configuracion.cs()
+	Este comando para habilitar que se pierdan datos en caso de que una de las migraciones lo haga o requiera
