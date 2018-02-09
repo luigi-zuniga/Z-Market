@@ -23,9 +23,11 @@ namespace Z_Market.Models
         [StringLength(30, ErrorMessage = "The Field {0} must be between {2} and {1} characters", MinimumLength = 3)]
         public string LastName { get; set; }
 
+        [DataType(DataType.Currency)]
         [DisplayFormat(DataFormatString = "{0:C3}", ApplyFormatInEditMode = false)]
         public decimal Salary { get; set; }
 
+        [DataType(DataType.Currency)]
         [Display(Name = "Bonus Percent")]
         [DisplayFormat(DataFormatString = "{0:P2}", ApplyFormatInEditMode = false)]
         public float BonusPercent { get; set; }
