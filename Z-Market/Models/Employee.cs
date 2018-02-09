@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -11,8 +12,8 @@ namespace Z_Market.Models
         [Key]
         public int EmployeeID { get; set; }
 
-        [Display(Name ="First Name")]
-        [Required(ErrorMessage ="You must enter {0}")]
+        [Display(Name = "First Name")]
+        [Required(ErrorMessage = "You must enter {0}")]
         [StringLength(30, ErrorMessage = "The Field {0} must be between {2} and {1} characters", MinimumLength = 3)]
         public string FirstName { get; set; }
 
@@ -22,7 +23,7 @@ namespace Z_Market.Models
         [StringLength(30, ErrorMessage = "The Field {0} must be between {2} and {1} characters", MinimumLength = 3)]
         public string LastName { get; set; }
 
-        [DisplayFormat(DataFormatString ="{0:C3}",ApplyFormatInEditMode =false)]
+        [DisplayFormat(DataFormatString = "{0:C3}", ApplyFormatInEditMode = false)]
         public decimal Salary { get; set; }
 
         [Display(Name = "Bonus Percent")]
@@ -33,12 +34,12 @@ namespace Z_Market.Models
         [Display(Name = "Date Of Birth")]
         [Required(ErrorMessage = "You must enter {0}")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy/mm/dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateOfBirth { get; set; }
 
         [Display(Name = "Start Time")]
         [Required(ErrorMessage = "You must enter {0}")]
-        [DisplayFormat(DataFormatString = "{0:hh:mm}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:hh\\:mm}", ApplyFormatInEditMode = true)]
         [DataType(DataType.Time)]
         public DateTime StartTime { get; set; }
 
@@ -54,5 +55,20 @@ namespace Z_Market.Models
 
         //virtual = Modificador de Acceso
         public virtual DocumentType DocumentType { get; set; }
+
+        //Squema NotMapped Para que no añada como campo en la Base de datos
+        [NotMapped]
+        public String Name
+        {
+            get{ return FirstName + " " + LastName; }
+        }
+
+        [NotMapped]
+        public int Age
+        {
+            get { return DateTime.Now.Year - DateOfBirth.Year; }   
+        }
+
+
     }
 }

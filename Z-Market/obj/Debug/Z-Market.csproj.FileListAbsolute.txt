@@ -107,3 +107,4 @@ c:\users\lpino\documents\visual studio 2015\Projects\Z-Market\Z-Market\bin\es\Mi
 c:\users\lpino\documents\visual studio 2015\Projects\Z-Market\Z-Market\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 c:\users\lpino\documents\visual studio 2015\Projects\Z-Market\Z-Market\obj\Debug\Z-Market.dll
 c:\users\lpino\documents\visual studio 2015\Projects\Z-Market\Z-Market\obj\Debug\Z-Market.pdb
+c:\users\lpino\documents\visual studio 2015\Projects\Z-Market\Z-Market\obj\Debug\Z-Market.csprojResolveAssemblyReference.cache
