@@ -6,23 +6,23 @@ using System.Web;
 
 namespace Z_Market.Models
 {
-    public class Supplier
+    public class Customer
     {
         [Key]
-        public int SupplierID { get; set; }
-        [StringLength(30, ErrorMessage ="The Field {0} must contain between {2} and {1} characters",MinimumLength = 3)]
-        [Required(ErrorMessage ="You must enter the field {0}")]
-        [Display(Name="Supplier Name")]
+        public int CustomerID { get; set; }
+        [StringLength(30, ErrorMessage = "The Field {0} must contain between {2} and {1} characters", MinimumLength = 3)]
+        [Required(ErrorMessage = "You must enter the field {0}")]
+        [Display(Name = "Customer Name")]
         public string Name { get; set; }
 
         [StringLength(30, ErrorMessage = "The Field {0} must contain between {2} and {1} characters", MinimumLength = 3)]
         [Required(ErrorMessage = "You must enter the field {0}")]
-        [Display(Name = "Contact First Name")]
+        [Display(Name = "First Name")]
         public string ContactFirstName { get; set; }
 
         [StringLength(30, ErrorMessage = "The Field {0} must contain between {2} and {1} characters", MinimumLength = 3)]
         [Required(ErrorMessage = "You must enter the field {0}")]
-        [Display(Name = "Contact Last Name")]
+        [Display(Name = "Last Name")]
         public string ContactLastName { get; set; }
 
         [DataType(DataType.PhoneNumber)]
@@ -34,11 +34,19 @@ namespace Z_Market.Models
         [Required(ErrorMessage = "You must enter the field {0}")]
         public string address { get; set; }
 
-        [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
+        [StringLength(30, ErrorMessage = "The Field {0} must contain between {2} and {1} characters", MinimumLength = 5)]
+        [Required(ErrorMessage = "You must enter the field {0}")]
+        [Display(Name = "Document")]
+        public string Document { get; set; }
 
+        //Relacion con DocumentType
+        public int DocumentTypeID { get; set; }
 
+        //Lado UNO 
+        public virtual DocumentType DocumentType { get; set; }
 
-        public virtual ICollection<SupplierProduct> SupplierProducts { get; set; }
+        //Relacion muchos de (Una order tiene Muchos Customer)
+        public virtual ICollection<Order> Order { get; set; }
+
     }
 }

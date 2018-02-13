@@ -31,8 +31,10 @@ namespace Z_Market.Models
         [DataType(DataType.MultilineText)]
         public string Remarks { get; set; }
 
+        //Este es lado Muchos de (1Producto Tiene Muchos SupplierProducs)
         public virtual ICollection<SupplierProduct> SupplierProducts { get; set; }
 
-
+        //Este es lado Muchos de (1Producto Tiene Muchas OrderDetails)
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }
